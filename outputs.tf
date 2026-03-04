@@ -1,0 +1,36 @@
+# S3 Bucket Module Outputs
+
+output "bucket_id" {
+  description = "S3 bucket ID (same as bucket name)"
+  value       = aws_s3_bucket.this.id
+}
+
+output "bucket_name" {
+  description = "S3 bucket name"
+  value       = aws_s3_bucket.this.bucket
+}
+
+output "bucket_arn" {
+  description = "S3 bucket ARN"
+  value       = aws_s3_bucket.this.arn
+}
+
+output "bucket_domain_name" {
+  description = "S3 bucket domain name"
+  value       = aws_s3_bucket.this.bucket_domain_name
+}
+
+output "bucket_regional_domain_name" {
+  description = "S3 bucket regional domain name"
+  value       = aws_s3_bucket.this.bucket_regional_domain_name
+}
+
+output "bucket_region" {
+  description = "S3 bucket region"
+  value       = aws_s3_bucket.this.region
+}
+
+output "tags" {
+  description = "Tags applied to the S3 bucket"
+  value       = aws_s3_bucket.this.tags
+}
