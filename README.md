@@ -10,7 +10,6 @@ A reusable Terraform module for creating AWS S3 buckets with AWS Security Hub co
 - [Usage](#usage)
 - [Requirements](#requirements)
 - [MCP Servers](#mcp-servers)
-- [License](#license)
 
 
 ## Prerequisites
@@ -448,11 +447,6 @@ module "archive_bucket" {
 | <a name="output_bucket_regional_domain_name"></a> [bucket\_regional\_domain\_name](#output\_bucket\_regional\_domain\_name) | S3 bucket regional domain name |
 | <a name="output_tags"></a> [tags](#output\_tags) | Tags applied to the S3 bucket |
 
-
-## License
-
-MIT Licensed. See [LICENSE](LICENSE) for full details.
-<!-- END_TF_DOCS -->
 
 ## Examples
 
