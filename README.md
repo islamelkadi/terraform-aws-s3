@@ -11,7 +11,6 @@ A reusable Terraform module for creating AWS S3 buckets with AWS Security Hub co
 - [Requirements](#requirements)
 - [MCP Servers](#mcp-servers)
 
-
 ## Prerequisites
 
 This module is designed for macOS. The following must already be installed on your machine:
@@ -26,8 +25,6 @@ make bootstrap
 ```
 
 This will install/upgrade: tfenv, Terraform (via tfenv), tflint, terraform-docs, checkov, and pre-commit.
-
-
 
 ## Security
 
@@ -61,7 +58,7 @@ This module implements AWS Security Hub compliance with an extensible override s
 
 ### Environment-Based Security Controls
 
-Security controls are automatically applied based on the environment through the [terraform-aws-metadata](https://github.com/islamelkadi/terraform-aws-metadata?tab=readme-ov-file#security-profiles){:target="_blank"} module's security profiles:
+Security controls are automatically applied based on the environment through the [terraform-aws-metadata](https://github.com/islamelkadi/terraform-aws-metadata?tab=readme-ov-file#security-profiles) module's security profiles:
 
 | Control | Dev | Staging | Prod |
 |---------|-----|---------|------|
@@ -71,7 +68,7 @@ Security controls are automatically applied based on the environment through the
 | Public access block | Recommended | Required | Required |
 | Lifecycle policies | Optional | Recommended | Required |
 
-For full details on security profiles and how controls vary by environment, see the <a href="https://github.com/islamelkadi/terraform-aws-metadata?tab=readme-ov-file#security-profiles" target="_blank">Security Profiles</a> documentation.
+For full details on security profiles and how controls vary by environment, see the [Security Profiles](https://github.com/islamelkadi/terraform-aws-metadata?tab=readme-ov-file#security-profiles) documentation.
 
 ### Security Best Practices
 
@@ -231,7 +228,6 @@ module "cdn" {
 }
 ```
 
-
 ## MCP Servers
 
 This module includes two [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) servers configured in `.kiro/settings/mcp.json` for use with Kiro:
@@ -244,7 +240,6 @@ This module includes two [Model Context Protocol (MCP)](https://modelcontextprot
 Both servers run via `uvx` and require no additional installation beyond the [bootstrap](#prerequisites) step.
 
 <!-- BEGIN_TF_DOCS -->
-
 
 ## Usage
 
@@ -446,7 +441,6 @@ module "archive_bucket" {
 | <a name="output_bucket_region"></a> [bucket\_region](#output\_bucket\_region) | S3 bucket region |
 | <a name="output_bucket_regional_domain_name"></a> [bucket\_regional\_domain\_name](#output\_bucket\_regional\_domain\_name) | S3 bucket regional domain name |
 | <a name="output_tags"></a> [tags](#output\_tags) | Tags applied to the S3 bucket |
-
 
 ## Examples
 
