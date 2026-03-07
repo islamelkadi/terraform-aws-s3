@@ -70,19 +70,6 @@ Security controls are automatically applied based on the environment through the
 
 For full details on security profiles and how controls vary by environment, see the [Security Profiles](https://github.com/islamelkadi/terraform-aws-metadata?tab=readme-ov-file#security-profiles) documentation.
 
-### Security Best Practices
-
-**Production Buckets:**
-- Use KMS customer-managed keys
-- Enable versioning for data protection
-- Enable access logging
-- Configure lifecycle policies
-- Block all public access (unless explicitly needed)
-
-**Development Buckets:**
-- KMS encryption still recommended
-- Versioning optional for cost savings
-- Access logging optional
 ## Features
 
 - S3 bucket with KMS encryption
