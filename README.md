@@ -99,8 +99,7 @@ For full details on security profiles and how controls vary by environment, see 
 
 ```hcl
 module "s3_bucket" {
-  source = "github.com/islamelkadi/terraform-aws-s3?ref=v1.0.0"
-  
+  source = "github.com/islamelkadi/terraform-aws-s3"
   namespace   = "example"
   environment = "prod"
   name        = "data"
@@ -118,8 +117,7 @@ module "s3_bucket" {
 
 ```hcl
 module "s3_bucket" {
-  source = "github.com/islamelkadi/terraform-aws-s3?ref=v1.0.0"
-  
+  source = "github.com/islamelkadi/terraform-aws-s3"
   security_controls = module.metadata.security_controls
   
   namespace   = "example"
@@ -160,8 +158,7 @@ module "s3_bucket" {
 
 ```hcl
 module "website_bucket" {
-  source = "github.com/islamelkadi/terraform-aws-s3?ref=v1.0.0"
-  
+  source = "github.com/islamelkadi/terraform-aws-s3"
   security_controls = module.metadata.security_controls
   
   security_control_overrides = {
@@ -199,8 +196,7 @@ module "website_bucket" {
 module "website_bucket" {
   depends_on = [module.cdn]
   
-  source = "github.com/islamelkadi/terraform-aws-s3?ref=v1.0.0"
-  
+  source = "github.com/islamelkadi/terraform-aws-s3"
   namespace   = "example"
   environment = "prod"
   name        = "website"
@@ -219,8 +215,7 @@ module "website_bucket" {
 
 # CloudFront distribution with OAC (recommended over legacy OAI)
 module "cdn" {
-  source = "github.com/islamelkadi/terraform-aws-cloudfront?ref=v1.0.0"
-  
+  source = "github.com/islamelkadi/terraform-aws-s3"
   origin_domain_name        = module.website_bucket.bucket_regional_domain_name
   use_origin_access_control = true  # Use OAC (recommended)
   
@@ -254,8 +249,7 @@ Both servers run via `uvx` and require no additional installation beyond the [bo
 # ============================================================================
 
 module "basic_bucket" {
-  source = "../"
-
+  source = "github.com/islamelkadi/terraform-aws-s3"
   namespace   = var.namespace
   environment = var.environment
   name        = var.bucket_name
@@ -289,8 +283,7 @@ module "basic_bucket" {
 # ============================================================================
 
 module "production_bucket" {
-  source = "../"
-
+  source = "github.com/islamelkadi/terraform-aws-s3"
   namespace   = var.namespace
   environment = "prod"
   name        = "${var.bucket_name}-prod"
@@ -337,8 +330,7 @@ module "production_bucket" {
 # ============================================================================
 
 module "archive_bucket" {
-  source = "../"
-
+  source = "github.com/islamelkadi/terraform-aws-s3"
   namespace   = var.namespace
   environment = var.environment
   name        = "${var.bucket_name}-archive"
