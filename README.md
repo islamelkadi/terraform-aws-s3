@@ -5,15 +5,13 @@ A reusable Terraform module for creating AWS S3 buckets with AWS Security Hub co
 ## Table of Contents
 
 - [Prerequisites](#prerequisites)
-- [Security Controls](#security-controls)
+- [Security](#security)
 - [Features](#features)
-- [Usage Examples](#usage-examples)
+- [Usage](#usage)
 - [Requirements](#requirements)
-- [Inputs](#inputs)
-- [Outputs](#outputs)
-- [Examples](#examples)
+- [MCP Servers](#mcp-servers)
+- [License](#license)
 
----
 
 ## Prerequisites
 
@@ -30,7 +28,11 @@ make bootstrap
 
 This will install/upgrade: tfenv, Terraform (via tfenv), tflint, terraform-docs, checkov, and pre-commit.
 
-## Security Controls
+
+
+## Security
+
+### Security Controls
 
 This module implements AWS Security Hub compliance with an extensible override system.
 
@@ -58,6 +60,33 @@ This module implements AWS Security Hub compliance with an extensible override s
 - Versioning optional for cost savings
 - Access logging optional
 
+### Environment-Based Security Controls
+
+Security controls are automatically applied based on the environment through the [terraform-aws-metadata](https://github.com/islamelkadi/terraform-aws-metadata?tab=readme-ov-file#security-profiles){:target="_blank"} module's security profiles:
+
+| Control | Dev | Staging | Prod |
+|---------|-----|---------|------|
+| KMS customer-managed keys | Optional | Required | Required |
+| Versioning | Optional | Required | Required |
+| Access logging | Optional | Required | Required |
+| Public access block | Recommended | Required | Required |
+| Lifecycle policies | Optional | Recommended | Required |
+
+For full details on security profiles and how controls vary by environment, see the <a href="https://github.com/islamelkadi/terraform-aws-metadata?tab=readme-ov-file#security-profiles" target="_blank">Security Profiles</a> documentation.
+
+### Security Best Practices
+
+**Production Buckets:**
+- Use KMS customer-managed keys
+- Enable versioning for data protection
+- Enable access logging
+- Configure lifecycle policies
+- Block all public access (unless explicitly needed)
+
+**Development Buckets:**
+- KMS encryption still recommended
+- Versioning optional for cost savings
+- Access logging optional
 ## Features
 
 - S3 bucket with KMS encryption
@@ -203,19 +232,6 @@ module "cdn" {
 }
 ```
 
-## Environment-Based Security Controls
-
-Security controls are automatically applied based on the environment through the [terraform-aws-metadata](https://github.com/islamelkadi/terraform-aws-metadata?tab=readme-ov-file#security-profiles){:target="_blank"} module's security profiles:
-
-| Control | Dev | Staging | Prod |
-|---------|-----|---------|------|
-| KMS customer-managed keys | Optional | Required | Required |
-| Versioning | Optional | Required | Required |
-| Access logging | Optional | Required | Required |
-| Public access block | Recommended | Required | Required |
-| Lifecycle policies | Optional | Recommended | Required |
-
-For full details on security profiles and how controls vary by environment, see the <a href="https://github.com/islamelkadi/terraform-aws-metadata?tab=readme-ov-file#security-profiles" target="_blank">Security Profiles</a> documentation.
 
 ## MCP Servers
 
@@ -432,9 +448,6 @@ module "archive_bucket" {
 | <a name="output_bucket_regional_domain_name"></a> [bucket\_regional\_domain\_name](#output\_bucket\_regional\_domain\_name) | S3 bucket regional domain name |
 | <a name="output_tags"></a> [tags](#output\_tags) | Tags applied to the S3 bucket |
 
-## Example
-
-See [example/](example/) for a complete working example with all features.
 
 ## License
 
