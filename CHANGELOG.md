@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/islamelkadi/terraform-aws-s3/compare/v1.0.0...v1.0.1) (2026-03-08)
+
+
+### Code Refactoring
+
+* enhance examples with real infrastructure and improve code quality ([35bf152](https://github.com/islamelkadi/terraform-aws-s3/commit/35bf152f8f3690eb69d10394de221012b3d666b9))
+
 ## 1.0.0 (2026-03-07)
 
 
