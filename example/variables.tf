@@ -30,11 +30,6 @@ variable "project_name" {
   default     = "example-project"
 }
 
-variable "kms_key_arn" {
-  description = "ARN of KMS key for S3 bucket encryption (replace with your actual KMS key)"
-  type        = string
-}
-
 variable "enable_versioning" {
   description = "Enable S3 bucket versioning"
   type        = bool
@@ -51,15 +46,4 @@ variable "glacier_transition_days" {
   description = "Number of days before transitioning objects to Glacier"
   type        = number
   default     = 90
-}
-
-variable "logging_bucket_name" {
-  description = "Name of S3 bucket for access logs (replace with your actual logging bucket)"
-  type        = string
-  default     = "my-logging-bucket"
-}
-
-variable "allowed_principals" {
-  description = "List of IAM principal ARNs allowed to access the bucket (replace with your actual IAM roles)"
-  type        = list(string)
 }

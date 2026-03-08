@@ -1,9 +1,12 @@
+# Primary Module Example - This demonstrates the terraform-aws-s3 module
+# Supporting infrastructure (KMS, IAM, logging bucket) is defined in separate files
+# to keep this example focused on the module's core functionality.
+#
 # S3 Bucket Examples
 # Demonstrates various S3 bucket configurations with security control overrides
 
 # ============================================================================
 # Example 1: Basic S3 Bucket (Minimal Configuration)
-# Uses fictitious KMS key ARN - replace with your actual KMS key
 # Override: Logging disabled for cost optimization in dev
 # ============================================================================
 
@@ -15,8 +18,8 @@ module "basic_bucket" {
   name        = var.bucket_name
   region      = var.region
 
-  # KMS encryption - replace with your actual KMS key ARN
-  kms_key_arn = var.kms_key_arn
+  # Direct reference to kms.tf module output
+  kms_key_arn = module.kms_key.key_arn
 
   # Versioning enabled for data protection
   enable_versioning = var.enable_versioning
@@ -50,8 +53,8 @@ module "production_bucket" {
   name        = "${var.bucket_name}-prod"
   region      = var.region
 
-  # KMS encryption - replace with your actual KMS key ARN
-  kms_key_arn = var.kms_key_arn
+  # Direct reference to kms.tf module output
+  kms_key_arn = module.kms_key.key_arn
 
   # Versioning enabled for compliance
   enable_versioning = true
@@ -63,14 +66,13 @@ module "production_bucket" {
   # Noncurrent version expiration after 1 year
   noncurrent_version_expiration_days = 365
 
-  # Access logging enabled - replace with your actual logging bucket
+  # Direct reference to logs.tf module output
   enable_logging        = true
-  logging_target_bucket = var.logging_bucket_name
+  logging_target_bucket = module.logging_bucket.bucket_name
   logging_target_prefix = "production-bucket/"
 
-  # Bucket policy - allow specific IAM roles
-  # Replace with your actual IAM role ARNs
-  allowed_principals = var.allowed_principals
+  # Direct reference to iam.tf module output
+  allowed_principals = [module.iam_role.role_arn]
 
   allowed_actions = [
     "s3:GetObject",
@@ -98,8 +100,8 @@ module "archive_bucket" {
   name        = "${var.bucket_name}-archive"
   region      = var.region
 
-  # KMS encryption - replace with your actual KMS key ARN
-  kms_key_arn = var.kms_key_arn
+  # Direct reference to kms.tf module output
+  kms_key_arn = module.kms_key.key_arn
 
   # Versioning enabled for audit trail
   enable_versioning = true
