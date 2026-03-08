@@ -1,23 +1,39 @@
-# Complete S3 Bucket Example
+# S3 Bucket Examples
 
-This example demonstrates a full-featured S3 bucket configuration with all security and lifecycle features enabled.
+This example demonstrates various S3 bucket configurations with security control overrides.
 
-## Features Enabled
+## Structure
 
-- KMS encryption (SSE-KMS) with customer-managed key
-- Versioning enabled
-- Lifecycle policy with Glacier transition after 90 days
-- Noncurrent version expiration after 365 days
-- Access logging to separate logging bucket
-- Public access blocked
-- SSL/TLS enforced
-- Least privilege bucket policy with specific principals
+This example includes:
+- **main.tf**: Primary module examples (3 bucket configurations)
+- **kms.tf**: Supporting KMS key infrastructure
+- **logs.tf**: Supporting logging bucket infrastructure
+- **iam.tf**: Supporting IAM role infrastructure
 
-## Architecture
+## Examples Included
 
-This example creates two buckets:
-1. **Logging Bucket**: Stores access logs from the main bucket
-2. **Main Bucket**: Corporate actions raw feeds bucket with full features
+### 1. Basic S3 Bucket
+Minimal configuration with KMS encryption and lifecycle policies. Logging disabled for dev environments.
+
+### 2. Production S3 Bucket
+Full compliance configuration with versioning, logging, lifecycle policies, and IAM access controls.
+
+### 3. Archive Bucket
+Optimized for long-term storage with aggressive lifecycle policies (Glacier transition after 30 days).
+
+## Supporting Infrastructure
+
+The supporting infrastructure files create real AWS resources from remote GitHub modules:
+- **KMS Key**: Provides encryption for all buckets
+- **Logging Bucket**: Stores access logs for the production bucket
+- **IAM Role**: Demonstrates bucket access policies
+
+## Supporting Infrastructure
+
+The supporting infrastructure files create real AWS resources from remote GitHub modules:
+- **KMS Key**: Provides encryption for all buckets
+- **Logging Bucket**: Stores access logs for the production bucket
+- **IAM Role**: Demonstrates bucket access policies
 
 ## Usage
 
@@ -27,8 +43,5 @@ terraform plan
 terraform apply
 ```
 
-## Outputs
-
-- `bucket_name`: Name of the created S3 bucket
-- `bucket_arn`: ARN of the created S3 bucket
-- `logging_bucket_name`: Name of the logging bucket
+<!-- BEGIN_TF_DOCS -->
+<!-- END_TF_DOCS -->
