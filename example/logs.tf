@@ -10,7 +10,7 @@
 #   logging_target_bucket = module.logging_bucket.bucket_name
 
 module "logging_bucket" {
-  source = "git::https://github.com/islamelkadi/terraform-aws-s3.git"
+  source = "git::https://github.com/islamelkadi/terraform-aws-s3.git?ref=v1.0.0"
 
   namespace   = var.namespace
   environment = var.environment

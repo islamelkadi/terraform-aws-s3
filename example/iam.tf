@@ -10,7 +10,7 @@
 #   allowed_principals = [module.iam_role.role_arn]
 
 module "iam_role" {
-  source = "git::https://github.com/islamelkadi/terraform-aws-iam.git//modules/role"
+  source = "git::https://github.com/islamelkadi/terraform-aws-iam.git//modules/role?ref=v1.0.0"
 
   namespace   = var.namespace
   environment = var.environment
