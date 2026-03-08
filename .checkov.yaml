@@ -29,3 +29,7 @@ skip-check:
   # S3 MFA Delete - Optional security feature
   - id: CKV_AWS_21
     comment: "MFA delete adds operational complexity. Users should enable based on their security requirements."
+  
+  # Terraform Module Sources - Using semantic versioning tags (commit hash)
+  - id: CKV_TF_1
+    comment: "Using semantic version tags (?ref=v1.0.0) instead of commit hashes for better maintainability and readability."
