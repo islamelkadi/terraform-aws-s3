@@ -1,5 +1,9 @@
 # Terraform AWS S3 Module
 
+[![Terraform Security](https://github.com/islamelkadi/terraform-aws-s3/actions/workflows/terraform-security.yaml/badge.svg)](https://github.com/islamelkadi/terraform-aws-s3/actions/workflows/terraform-security.yaml)
+[![Terraform Lint & Validation](https://github.com/islamelkadi/terraform-aws-s3/actions/workflows/terraform-lint.yaml/badge.svg)](https://github.com/islamelkadi/terraform-aws-s3/actions/workflows/terraform-lint.yaml)
+[![Terraform Docs](https://github.com/islamelkadi/terraform-aws-s3/actions/workflows/terraform-docs.yaml/badge.svg)](https://github.com/islamelkadi/terraform-aws-s3/actions/workflows/terraform-docs.yaml)
+
 A reusable Terraform module for creating AWS S3 buckets with AWS Security Hub compliance (FSBP, CIS, NIST 800-53, NIST 800-171, PCI DSS), KMS encryption, versioning, lifecycle policies, and flexible security control overrides.
 
 ## Table of Contents
