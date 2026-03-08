@@ -70,6 +70,24 @@ Security controls are automatically applied based on the environment through the
 
 For full details on security profiles and how controls vary by environment, see the [Security Profiles](https://github.com/islamelkadi/terraform-aws-metadata?tab=readme-ov-file#security-profiles) documentation.
 
+### Security Scan Suppressions
+
+This module suppresses certain Checkov security checks that are either not applicable to example/demo code or represent optional features. The following checks are suppressed in `.checkov.yaml`:
+
+**Module Source Versioning (CKV_TF_1, CKV_TF_2)**
+- Suppressed because we use semantic version tags (`?ref=v1.0.0`) instead of commit hashes for better maintainability and readability
+- Semantic versioning is a valid and widely-accepted versioning strategy for stable releases
+
+**KMS IAM Policies (CKV_AWS_111, CKV_AWS_356, CKV_AWS_109)**
+- Suppressed in example code where KMS modules use flexible IAM policies for demonstration purposes
+- Production deployments should customize KMS policies based on specific security requirements and apply least privilege principles
+
+**S3 Optional Features**
+- **Lifecycle Rules (CKV_AWS_300)**: Abort incomplete multipart upload rules are optional and use-case specific
+- **Event Notifications (CKV2_AWS_62)**: S3 event notifications are use-case specific; enable based on event processing requirements
+- **Cross-Region Replication (CKV_AWS_144)**: Optional disaster recovery feature that adds cost and complexity
+- **MFA Delete (CKV_AWS_21)**: Optional security feature that adds operational complexity; enable based on security requirements
+
 ## Features
 
 - S3 bucket with KMS encryption
